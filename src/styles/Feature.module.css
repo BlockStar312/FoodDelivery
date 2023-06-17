@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+p{
+    color: #272D2D;
+}
+
+.container{
+    width: 38vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+}
+
+.title{
+    font-size: 28px;
+    font-weight: 650;
+    margin-bottom: 2rem;
+}
+
+.description{
+    font-size: 18px;
+    width: 32vw;
+    letter-spacing: 0.5px;
+}

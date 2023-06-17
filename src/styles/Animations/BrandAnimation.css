@@ -1,0 +1,43 @@
+.text-animation-container {
+    height: 70px; /* Adjust height as needed */
+    width: 16vw;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .animated-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    animation: slideUpAnimation 2s linear infinite;
+    font-size: 64px;
+    font-weight: 700;
+    text-align: center;
+  }
+  
+  .visible {
+    opacity: 1;
+  }
+
+  @keyframes slideUpAnimation {
+    0% {
+      transform: translateY(100%);
+    }
+    5% {
+      transform: translateY(0%);
+    }
+    25% {
+      transform: translateY(0%);
+    }
+    30%{
+      transform: translateY(-100%);
+    }
+    50%{
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
