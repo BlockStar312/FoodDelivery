@@ -118,23 +118,31 @@ export const constants = {
         headline : "What Our Customers Are Saying",
         review1 :{
             name : "Jennifer R",
-            text : "Bitenow has exceeded my expectations in every way. The food is consistently delicious, the delivery is speedy, and the customer service is exceptional."
+            text : "Bitenow has exceeded my expectations in every way. The food is consistently delicious ."
         },
         review2 :{
             name : "Rachel B",
-            text : "FoodExpress has made my busy evenings so much easier. With just a few taps on the app, I can enjoy a restaurant-quality meal delivered straight to my doorstep. It's like having my personal chef on speed dial!"
-        },
-        review3 :{
-            name : "Alex W",
-            text : "The quality of the food from FoodExpress is outstanding. Each dish arrives fresh, hot, and packed with flavor"
+            text : "BiteNow has made my busy evenings so much easier. With just a few taps on the app, I can enjoy a restaurant-quality meal delivered straight to my doorstep. It's like having my personal chef on speed dial , the delivery is speedy, and the customer service is exceptional.It's a game-changer for food lovers like me! The ordering process is seamless, and I love that I can customize my meals to my preferences. !"
         },
         review4 :{
+            name : "Alex W",
+            text : "The quality of the food from FoodExpress is outstanding. Each dish arrives fresh, hot, and packed with flavor ,I can satisfy all my cravings in one place.,From Mexican to Italian to Asian. I can enjoy a restaurant-quality meal delivered straight to my doorstep"
+        },
+        review3 :{
             name : "Matthew C",
-            text : "It's a true testament to their commitment to customer satisfaction"
+            text : "It's a true testament to their commitment to customer satisfaction "
         },
         review5 :{
             name : "Daniel S",
-            text : "I'm impressed by the wide range of cuisines available on FoodExpress. From Mexican to Italian to Asian, I can satisfy all my cravings in one place. It's a game-changer for food lovers like me! The ordering process is seamless, and I love that I can customize my meals to my preferences. "
+            text : "I'm impressed by the wide range of cuisines available on BiteNow.  "
+        },
+        review6 :{
+            name : "July B",
+            text : "I'm impressed by the wide range of cuisines available on BiteNow.  "
+        },
+        review7 :{
+            name : "Bob Marley",
+            text : "I'm impressed by the wide range of cuisines available on BiteNow.  "
         }
      },
      finalCTA :{

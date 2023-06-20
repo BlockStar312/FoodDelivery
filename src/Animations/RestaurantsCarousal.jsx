@@ -9,7 +9,7 @@ function RestaurantsCarousal({speed,rtl,slides,names}) {
     const settings = {
         dots: false,
         infinite: true,
-        speed: 850,
+        speed: speed,
         slidesToShow: slides, // Adjust the number of visible slides as needed
         slidesToScroll: 1,
         autoplay: true,

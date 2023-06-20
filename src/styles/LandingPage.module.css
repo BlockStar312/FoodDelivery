@@ -150,6 +150,7 @@ p{
     left: 0;
     top: 73%;
     transform: translateX(-25%);
+    z-index: 3;
 }
 /* 
 end of the hero section */
@@ -164,6 +165,7 @@ end of the hero section */
     margin-top: 50vh;
     margin-bottom: 5vh;
     padding: 5vh 0vh;
+    position: relative;
 }
 .featureHeadline{
     font-size: 48px;
@@ -175,12 +177,142 @@ end of the hero section */
     height: 80vh;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .featureBanner{
     width: 60%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
 }
 
+ /* first feature animation cards */
+.feactureBackCard{
+    position: absolute;
+    top: 27%;
+    left: 15%;
+    z-index: 1;
+}
+
+.orderCard{
+    position: absolute;
+    top: 10%;
+    right: 27%;
+    z-index: 2;
+}
+
+.featureExtraCheeze{
+    position: absolute;
+    top: 15%;
+    left: 8%;
+    transform: rotate(10deg);
+    z-index: 2;
+}
+.yourOrderElement{
+    position: absolute;
+    top: 18.25%;
+    left: 42%;
+    z-index: 2;
+}
+/* second features animation elements */
+.orderRecieved{
+    position: absolute;
+    left: 42%;
+    top: 10%;
+    border: 1px solid rgb(179, 179, 179);
+    border-radius: 10px;
+}
+
+.addSpices{
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    border: 1px solid rgb(179, 179, 179);
+    border-radius: 10px;
+    background-color: white;
+    transform: rotate(10deg);
+}
+
+.cookingWokhei{
+    position: absolute;
+    top: 20%;
+    right: 15%;
+    border: 1px solid rgb(179, 179, 179);
+    border-radius: 10px;
+    background-color: white;
+    transform: rotate(-10deg);
+}
+
+/* thrid animation elements */
+
+.trackMap{
+    position: absolute;
+    top: 22%;
+    left: 20%;
+}
+
+.PickedUp{
+    position: absolute;
+    top: 10%;
+    left: 8%;
+    z-index: 2;
+    transform: rotate(-12deg);
+}
+
+.arrivingSoon{
+    position: absolute;
+    top: 25%;
+    right: 27%;
+    z-index: 2;
+    transform: rotate(12deg);
+}
+
+/* fourth animation elements */
+.package{
+    position: absolute;
+    top: 40%;
+    left: 35%;
+}
+
+.ratings{
+    position: absolute;
+    top: 25%;
+    right:5%;
+}
+
+.Delivered{
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    transform: rotate(-15deg);
+}
+
+.payments{
+    position: absolute;
+    bottom: 11%;
+    left: 24%;
+    transform: rotate(15deg);
+}
+
+/* paths from feature 1 to feature 2 */
+.pathf1tof2{
+    position: absolute;
+    /* border: 1px solid black; */
+    top: 18%;
+}
+.pathf2tof3{
+    position: absolute;
+    /* border: 1px solid black; */
+    top: 48%;
+}
+
+.pathf3tof4{
+    position: absolute;
+    /* border: 1px solid black; */
+    top: 68%;
+}
+/* end of the path 1 */
 .restaurantsConatainer{
     width: 100vw;
     height: 90vh;
@@ -234,10 +366,11 @@ end of the benefits */
 
 .testimonialsContainer{
     width: 100vw;
-    height: 100vh;
+    height: 120vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
 }
 
 .testimonialsHeadline{
@@ -245,7 +378,65 @@ end of the benefits */
     font-weight: 700;
     text-align: center;
 }
+.testimonialWrapper{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr); /* Adjusted grid-template-rows */
+    grid-gap: 3rem; /* Gap between grid items */
+    padding: 3rem 0rem;
+}
 
+.gridItem{
+    box-shadow: 8px 8px 20px #ebf0ff,-4px -4px 20px #ebf0ff;
+}
+
+  /* Varying widths and heights for each grid item */
+.gridItem:nth-child(1) {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+    width: 30vw;
+  }
+  
+  .gridItem:nth-child(2) {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 2;
+    width: 30vw;
+  }
+  
+  .gridItem:nth-child(3) {
+    grid-column: 3 / span 1;
+    grid-row: 1 / span 1;
+    width: 25vw;
+    position: relative;
+    left: -20%;
+  }
+  
+  .gridItem:nth-child(4) {
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 2;
+    padding-left: 3rem;
+  }
+  
+  .gridItem:nth-child(5) {
+    width: 35vw;
+    grid-column: 2 / span 1;
+    grid-row: 3 / span 1;
+  }
+  
+  .gridItem:nth-child(6) {
+    grid-column: 3 / span 1;
+    grid-row: 2 / span 1;
+    width: 30vw;
+    position: relative;
+    left: -20%;
+
+  }
+  .gridItem:nth-child(7) {
+    grid-column: 3 / span 1;
+    grid-row: 3 / span 1;
+    width: 25vw;
+  }
 /* end of the testimonials */
 
 .finalCTAContainer{
