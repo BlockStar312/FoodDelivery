@@ -3,6 +3,7 @@ import { constants } from '../constants';
 import { gsap } from 'gsap';
 import { ScrollTrigger} from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { MotionPathPlugin } from "gsap/all";
 import css from "../styles/LandingPage.module.css"
 
@@ -12,6 +13,8 @@ import benefitIcon1 from "../Assets/bestdeals.png";
 import benefitIcon2 from "../Assets/fastDelivery.png";
 import benefitIcon3 from "../Assets/fresh.png";
 import YourOrder from "../Assets/YourOrder.png";
+import foodPackage from "../Assets/food-pack.png";
+import deliveryGuy from '../Assets/deliveryGuy.png'
 
 import ExtraCheeze from "../Assets/Features/Feature1/Extra Cheeze.png";
 import backCard from "../Assets/Features/Feature1/backCard.png";
@@ -47,102 +50,381 @@ function LandingPage() {
 
     const yourOrderRef = useRef(null);
     const pathOrderRef = useRef(null);
+    const pathPackageRef  = useRef(null);
+    const deliveryPathRef = useRef(null);
     const sectionOneRef = useRef(null);
+    const trackPathRef = useRef(null);
 
-  useEffect(()=>{
-    // hero section animations
-    const Dish = document.getElementById('Dish');
-    const rightSlide = document.getElementById('rightSlide');
-    const cheezeCard = document.getElementById('ExtraCheezeCard');
-    const menuCard = document.getElementById('MenuCard');
-    const orderCard = document.getElementById('Ordercard');
+  const dishAnime = () =>{
+       return gsap.to('#Dish', {
+                        y: '0%',
+                        x: '-30%',
+                        duration: 1.5,
+                        ease: 'power1.out',
+                        delay: 0.4,
+                        toggleActions : 'play reverse'
+                        });
+  }
 
-    // initial positions
-    // hero section
-    gsap.set(Dish, {x : '-10%', y: '30%' });
-    gsap.set(rightSlide, { y: '40%' });
+  const foodCardAnime = () =>{
+       return gsap.to('#rightSlide', {
+                        y: '0%',
+                        duration: 3,
+                        ease: 'power2.out',
+                        delay: 0.4,
+                    });
+  }
 
-    // feature 1
-    gsap.set(cheezeCard,{x : '-75%',rotate: '0deg'})
-    gsap.set(menuCard,{ y: '20%',opacity : '0.2'})
+  const featureCheezeAnim = () =>{
+        return gsap.to('#ExtraCheezeCard', {
+                        x: '0%',
+                        y: '0%',
+                        opacity : 0.25,
+                        opacity : 0.5,
+                        opacity : 0.75,
+                        opacity : 1.0,
+                        rotate : '15',
+                        duration: 4,
+                        ease: 'power2.out',
+                    });
+  }
 
-    gsap.to(Dish, {
-      y: '0%',
-      x: '-30%',
-      duration: 1.5,
-      ease: 'power1.out',
-      delay: 0.4,
-      toggleActions : 'play reverse'
-    });
+  const featureMenuCardFadeinAnime = () =>{
+        return gsap.to('#MenuCard', {
+                        y: '0%',
+                        opacity : 1,
+                        duration: 4,
+                        ease: 'power2.out',
+                    });
+  }
 
-    gsap.to(rightSlide, {
-        y: '0%',
-        duration: 3,
-        ease: 'power2.out',
-        delay: 0.4,
-      });
-    // end of the hero section animations
+  const featureOrderCard = () =>{
+        return gsap.to('#Ordercard', {
+                        y: '0%',
+                        opacity : 1,
+                        duration: 4,
+                        ease: 'power2.out',
+                    });
+  }
 
-    // this will scroll the dish element to features section
-    const cheezeAnim = gsap.to(cheezeCard, {
-        x: '0%',
-        y: '0%',
-        rotate : '15',
-        duration: 3,
-        ease: 'power2.out',
-        delay : 0.4
-      });
 
-    const menuAnim = gsap.to(menuCard, {
-        y: '0%',
-        opacity : 1,
-        duration: 2.5,
-        ease: 'power2.out',
-        delay : 0.4
-      });
-    
-    gsap.to(Dish, {
-        y: '142%',
-        x: '75%',
-        scale: 0.3,
-        duration: 3,
-        ease : 'power1.out',
-        scrollTrigger: {
-          trigger: Dish,
-          start: 'top 80%',
-          end: 'bottom 0%',
-          scrub: true,
-          markers: true, // for development/debugging purposes
-          onLeaveBack : () => {
-            gsap.to(Dish, {
-                y: '0%',
-                x: '-30%',
-                duration: 1.5,
-                ease: 'power1.out',
-              });
-          },
-        }})
-    
-    gsap.to(yourOrderRef.current, {
+  const scrollDishtoFeatureSectionAnime = () =>{
+        return gsap.to('#Dish', {
+                                y: '142%',
+                                x: '75%',
+                                rotate : '360',
+                                scale: 0.3,
+                                duration: 4,
+                                ease : 'power1.out',
+                                scrollTrigger: {
+                                trigger: '#Dish',
+                                start: 'top 75%',
+                                end: 'bottom 0%',
+                                scrub: true,
+                                onLeaveBack : () => {
+                                    gsap.to('#Dish', {
+                                        y: '0%',
+                                        x: '-30%',
+                                        duration: 1.5,
+                                        ease: 'power1.out',
+                                    });
+                                },
+                                }})
+  }
+
+  const triggerPath1 = () =>{
+        return gsap.to('#YourOrderElement', {
+                scrollTrigger : {
+                    trigger : '#YourOrderElement',
+                    start: 'top 30%',
+                    end: 'bottom 0%',
+                    scrub: true
+                }
+            });
+  }
+  const motionPathFromFeature1  = () =>{
+        return gsap.to('#YourOrderElement', {
+                        duration : 5,
+                        ease: "power1.out",
+                        motionPath: {
+                            path: pathOrderRef.current.querySelector("path"),
+                            align: pathOrderRef.current.querySelector("path"),
+                            alignOrigin: [0.5, 0.5],
+                            start: 0,
+                        },
+                    });
+  }
+
+  // feature section 2 animation elements
+
+  const addingSpicesCardAnime = () =>{
+        return gsap.to('#addingSpicesCard', {
+                        x: '0%',
+                        y: '0%',
+                        opacity : 0.25,
+                        opacity : 0.5,
+                        opacity : 0.75,
+                        opacity : 1.0,
+                        rotate : '15',
+                        duration: 1,
+                        ease: 'power2.out',
+                    });
+  }
+  const wokheiCardAnime = () =>{
+        return gsap.to('#wokheiCard',{
+                     x : '0%',
+                     y : '0%',
+                     opacity : 0.25,
+                     opacity : 0.5,
+                     opacity : 0.75,
+                     opacity : 1.0,
+                     rotate : '-15',
+                     duration: 1,
+                     ease: 'power2.out',
+        })
+  }
+
+  const orderRecievedAnime = () =>{
+        const animTimeline = gsap.timeline()
+        animTimeline.to("#orderRecievedCard",{
+                    y : '0%',
+                    opacity : 1,
+                    rotateY : '1080',
+                    scale : 0.8,
+                    duration : 1,
+                    ease : 'power2.out'
+        });
+        animTimeline.to("#orderRecievedCard",{
+            y : '-20%',
+            opacity : 0,
+            duration : 1,
+            ease : 'power1.in'
+        })
+        return animTimeline
+  }
+  // trigge when scroll is reached
+  const triggerPath2 = () =>{
+        return gsap.to('#PackageElement', {
             scrollTrigger : {
-                trigger : '#YourOrderElement',
-                start: 'top 30%',
-                end: 'bottom 0%',
-                scrub: true
+            trigger : '#PackageElement',
+            start: 'top 30%',
+            end: 'bottom 0%',
+            scrub: true
+            }
+        });
+  }
 
-            },
-            duration : 5,
-            delay : 0.4,
-            ease: "power2.out",
+  const motionPathFromFeature2  = () =>{
+    return gsap.to('#PackageElement', {
+                    duration : 5,
+                    ease: "power1.out",
+                    motionPath: {
+                        path: pathPackageRef.current.querySelector("path"),
+                        align:pathPackageRef.current.querySelector("path"),
+                        alignOrigin: [0.5, 0.5],
+                        start: 0,
+                    },
+                });
+    }
+  const arrivingSoonAnime = () =>{
+        return gsap.to('#ArrivingSoon',{
+              y : '0%',
+              rotate : '-15',
+              opacity : 1,
+              ease : 'power2.out',
+              duration : 1
+        })
+  }
+
+  const pickedUpAnime = () =>{
+        return gsap.to('#pickedUp',{
+                x : '0%',
+                y : '0%',
+                rotate : '15',
+                opacity : 1,
+                ease : 'power2.out',
+                duration : 1
+        })
+  }
+
+  const showUpTrackMapAnime = () =>{
+        return gsap.to('#trackingMap', {
+            y: '0%',
+            opacity : 1,
+            duration: 1.5,
+            ease: 'power1.out',
+        });
+  }
+
+  const deliveryMotionPath = () =>{
+        return gsap.to('#deliveryElement', {
+                        duration : 5,
+                        ease: "power1.out",
+                        motionPath: {
+                            path: deliveryPathRef.current.querySelector("path"),
+                            align: deliveryPathRef.current.querySelector("path"),
+                            alignOrigin: [0.5, 0.5],
+                            start: 0,
+                        },
+        });
+    }
+
+ // last section animations
+  const deliveryPackAnime = () =>{
+        return gsap.to("#deliveredPack",{
+                x : '0%',
+                rotate : '-15',
+                opacity : 1,
+                duration : 1,
+                ease : 'power2.out'
+        })
+  }
+
+  const paymentsCardAnime = () =>{
+        return gsap.to('#paymentsCard',{
+                x : '0',
+                y: '0',
+                rotate : '15',
+                opacity : 1,
+                duration : 1,
+                ease : 'power2.out'
+        })
+  }
+
+  const packageShowUpAnime = () =>{
+      return gsap.to('#package',{
+           y : '0',
+           opacity : 1,
+           duration : 1,
+           ease : 'power2.out'
+      })
+  }
+  const ratingsShowUpAnime = () =>{
+        return gsap.to('#ratingBar',{
+                x : '0',
+                opacity : 1,
+                duration : 2,
+                ease: 'elastic.out(1.5,0.2)'
+        })
+  }
+
+  const trackingDeliveryAnime = () =>{
+        const trackTimeLine = gsap.timeline();
+        trackTimeLine.add(gsap.to(trackPathRef.current ,{
+             opacity : 1,
+             duration : 0.4,
+             ease : 'power1.in'
+        }))
+        trackTimeLine.add(gsap.to('#trackingDeliveryGuy',{
+            opacity : 1,
+             duration : 0.4,
+             ease : 'power1.in'
+        }))
+        trackTimeLine.add(gsap.to('#trackingDeliveryGuy',{
+            duration : 6,
+            ease: "power1.out",
             motionPath: {
-                path: pathOrderRef.current.querySelector("path"),
-                align: pathOrderRef.current.querySelector("path"),
+                path: trackPathRef.current.querySelector("path"),
+                align: trackPathRef.current.querySelector("path"),
                 alignOrigin: [0.5, 0.5],
                 start: 0,
             },
-    });
-  }); // useEffect close
+        }))
+        return trackTimeLine
+  }
+  useEffect(()=>{
 
+    const masterTimeline = gsap.timeline();
+
+    const feature1Timeline = gsap.timeline();
+
+    const feature2Timeline = gsap.timeline();
+
+    const feature3Timeline = gsap.timeline();
+
+    const feature4Timeline = gsap.timeline();
+
+    // initiials for the elements for section 2
+    feature1Timeline.set('#Dish', {x : '-10%', y: '30%' })
+    feature1Timeline.set('#rightSlide',  { y: '40%' })
+    feature1Timeline.set('#ExtraCheezeCard', {x : '-75%',rotate: '-15deg',opacity : 0})
+    feature1Timeline.set('#MenuCard', { y: '25%',opacity : '0'})
+    feature1Timeline.set('#Ordercard',{y : "20%" , opacity : 0.2})
+
+    // initiials for the elements for section 2
+    feature2Timeline.set('#addingSpicesCard',{x : '-75%',rotate: '-15deg',opacity : 0})
+    feature2Timeline.set('#wokheiCard',{x : '20%',y: '-35%',rotate: '15deg',opacity : 0})
+    feature2Timeline.set('#orderRecievedCard',{y: '-25%',opacity : 0})
+
+    // initiials for the elements for section 3
+    feature3Timeline.set('#ArrivingSoon',{y:'35%',rotate: '15deg',opacity : 0})
+    feature3Timeline.set('#pickedUp',{x : '20%',y:'25%',rotate: '-20deg',opacity : 0})
+    feature3Timeline.set('#trackingMap',{y: '20%',opacity : 0})
+    feature3Timeline.set('#trackingDeliveryGuy',{opacity: 0})
+    feature3Timeline.set(trackPathRef.current,{opacity : 0})
+
+    // initiials for the elements for section 4
+    feature4Timeline.set('#deliveredPack',{x : '-20%',rotate : '-30',opacity :0})
+    feature4Timeline.set('#paymentsCard',{x: '-20%',y : "30%" , rotate : '-15',opacity : 0})
+    feature4Timeline.set('#package',{y:"10%",opacity: 0})
+    feature4Timeline.set('#ratingBar',{x : '15%',opacity :0})
+
+    // timeline for section 1
+    feature1Timeline.add([dishAnime(),foodCardAnime()],0)
+    feature1Timeline.add(scrollDishtoFeatureSectionAnime())
+    feature1Timeline.add([featureCheezeAnim(),featureMenuCardFadeinAnime(),featureOrderCard()],'-=0.3')
+
+
+
+    // timeline for section 2
+    feature2Timeline.add(orderRecievedAnime())
+
+    feature2Timeline.add(addingSpicesCardAnime())
+
+    feature2Timeline.add(wokheiCardAnime() ,'-=0.3')
+
+
+
+    // timeline for section 3
+
+    feature3Timeline.add(arrivingSoonAnime())
+
+    feature3Timeline.add(pickedUpAnime(),'-=0.5')
+
+    feature3Timeline.add(showUpTrackMapAnime(),'-=0.4')
+
+    feature3Timeline.add(trackingDeliveryAnime())
+
+
+    // timeline for section 4
+    feature4Timeline.add(deliveryPackAnime())
+
+    feature4Timeline.add(paymentsCardAnime(),'-=1')
+
+    feature4Timeline.add(packageShowUpAnime(),'-=0.5')
+
+    feature4Timeline.add(ratingsShowUpAnime(),'-=0.5')
+
+    // master timeline to link add elements
+    masterTimeline.add(feature1Timeline)
+
+    masterTimeline.add(triggerPath1())
+
+    masterTimeline.add(motionPathFromFeature1(),'+=1.5')
+
+    masterTimeline.add(feature2Timeline)
+
+    masterTimeline.add(triggerPath2())
+
+    masterTimeline.add(motionPathFromFeature2(),'+=1.5')
+
+    masterTimeline.add(feature3Timeline)
+
+    masterTimeline.add(deliveryMotionPath(),'+=1.5')
+
+    masterTimeline.add(feature4Timeline)
+
+  }); // useEffect close
 
   return (
     <div className={css.mainContainer}>
@@ -233,13 +515,14 @@ function LandingPage() {
                       description = {constants.featuresSection.feature2.description}
                     />
                 <div className={css.featureBanner}>
-                    <img src= {OrderRecieved} alt="" className={css.orderRecieved} width={200}/>
-                    <img src={addSpices} alt="" className={css.addSpices} width={100}/>
-                    <img src={wokhei} alt="" className={css.cookingWokhei} width={100}/>
+                    <img src= {OrderRecieved} alt="" id='orderRecievedCard' className={css.orderRecieved} width={200}/>
+                    <img src={addSpices} alt="" id='addingSpicesCard' className={css.addSpices} width={100}/>
+                    <img src={wokhei} alt="" id='wokheiCard' className={css.cookingWokhei} width={100}/>
                  </div>
              </div>
              {/* path from the feature 2 to feature 3 */}
-             <svg xmlns="http://www.w3.org/2000/svg" className={css.pathf2tof3} id='PathF2toF3' viewBox="0 0 800 200" width="800" height="200">
+             <img src={foodPackage} alt="" className={css.packageElement} id='PackageElement' width={40}/>
+             <svg xmlns="http://www.w3.org/2000/svg" className={css.pathf2tof3} id='PathF2toF3' ref={pathPackageRef} viewBox="0 0 800 200" width="800" height="200">
                         <path d="M 800 0
                                  C 800 0 , 800 100 , 700 100
                                  L 700 100
@@ -249,31 +532,56 @@ function LandingPage() {
              </svg>
              <div className={css.featureWrapper}>
                  <div className={css.featureBanner}>
-                    <img src={ArrivingSoon} alt="" className={css.arrivingSoon} width={100}/>
-                    <img src={PickedUp} alt="" className={css.PickedUp} width={100}/>
-                    <img src={TrackMap} alt="" className={css.trackMap} width={320} />
+                    <img src={ArrivingSoon} alt="" className={css.arrivingSoon} id='ArrivingSoon' width={100}/>
+                    <img src={PickedUp} alt="" className={css.PickedUp} id='pickedUp' width={100}/>
+                    <img src={TrackMap} alt="" className={css.trackMap} id='trackingMap'  width={320} />
+                    <img src={deliveryGuy} alt="" className={css.trackDeliveryMan} id='trackingDeliveryGuy'  width={30} />
+                    {/* this is the map track anime svg path */}
+                    <svg xmlns="http://www.w3.org/2000/svg" ref={trackPathRef} className={css.trackingPath} id='trackPath' viewBox="0 0 200 400" width="200" height="400">
+                        <defs>
+                            <marker id="ball-marker" viewBox="0 0 10 10" refX="5" refY="5"
+                                    markerWidth="3" markerHeight="3">
+                                    <circle cx="5" cy="5" r="5" fill="#23CE6B" />
+                            </marker>
+                        </defs>
+
+                        <path d="M 15 18
+                                 L 90 20
+                                 L 90 180
+                                 L 188 140
+                                 L 188 280
+                                 L 90 280
+                                 L 90 360
+                                 " 
+                                 fill="none" 
+                                 stroke="#23CE6B" 
+                                 strokeWidth="2.5" 
+                                 marker-start="url(#ball-marker)"
+                                 marker-end="url(#ball-marker)"/>
+                    </svg>
                  </div>
                  <Feature title = {constants.featuresSection.feature3.headline}
                       description = {constants.featuresSection.feature3.description}
                     />
              </div>
-             <svg xmlns="http://www.w3.org/2000/svg" className={css.pathf3tof4} id='PathF3tof4' viewBox="0 0 200 600" width="200" height="600">
+             <img src={deliveryGuy} alt="" className={css.deliveryElement} id='deliveryElement' width={40}/>
+             <svg xmlns="http://www.w3.org/2000/svg" className={css.pathf3tof4} id='PathF3tof4' ref={deliveryPathRef} viewBox="0 0 200 600" width="200" height="600">
                         <path d="M 0 30
                                  C 0 30, 100 20, 100 140
                                  L 100 140
                                  L 100 480
                                  C 100 480, 90 580, 200 580
-                                 L 200 580" fill="none" stroke="#B9BDBD" strokeWidth="2.5" strokeDasharray="7 7" />
+                                 L 200 580" fill="none" stroke="#B9BDBD" strokeWidth="2.5"  strokeDasharray="7 7" />
              </svg>
              <div className={css.featureWrapper}>
                  <Feature title = {constants.featuresSection.feature4.headline}
                       description = {constants.featuresSection.feature4.description}
                     />
                 <div className={css.featureBanner}>
-                    <img src={Package} alt="" className={css.package} width={360}/>
-                    <img src={ratings} alt="" className={css.ratings} width={180}/>
-                    <img src={payments} alt="" className={css.payments} width={120}/>
-                    <img src={Delivered} alt="" className={css.Delivered} width={120}/>
+                    <img src={Package} alt="" className={css.package} id='package' width={360}/>
+                    <img src={ratings} alt="" className={css.ratings} id='ratingBar' width={180}/>
+                    <img src={payments} alt="" className={css.payments} id='paymentsCard' width={120}/>
+                    <img src={Delivered} alt="" className={css.Delivered} id='deliveredPack' width={120}/>
                  </div>
              </div>
              
