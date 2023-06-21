@@ -222,6 +222,7 @@ end of the hero section */
     top: 10%;
     border: 1px solid rgb(179, 179, 179);
     border-radius: 10px;
+    opacity: 0;
 }
 
 .addSpices{
@@ -231,7 +232,8 @@ end of the hero section */
     border: 1px solid rgb(179, 179, 179);
     border-radius: 10px;
     background-color: white;
-    transform: rotate(10deg);
+    transform: rotate(15deg);
+    opacity: 0;
 }
 
 .cookingWokhei{
@@ -242,6 +244,14 @@ end of the hero section */
     border-radius: 10px;
     background-color: white;
     transform: rotate(-10deg);
+    opacity: 0;
+}
+
+.packageElement{
+    position: absolute;
+    top: 47%;
+    right: 22.5%;
+    z-index: 2;
 }
 
 /* thrid animation elements */
@@ -250,14 +260,16 @@ end of the hero section */
     position: absolute;
     top: 22%;
     left: 20%;
+    opacity: 0;
 }
 
 .PickedUp{
     position: absolute;
     top: 10%;
-    left: 8%;
+    left: 10%;
     z-index: 2;
     transform: rotate(-12deg);
+    opacity: 0;
 }
 
 .arrivingSoon{
@@ -266,6 +278,23 @@ end of the hero section */
     right: 27%;
     z-index: 2;
     transform: rotate(12deg);
+    opacity: 0;
+}
+
+.trackingPath{
+    position: absolute;
+    left: 30%;
+    top: 30%;
+    /* border: 1px solid black; */
+    opacity: 0;
+}
+
+.trackDeliveryMan{
+    position: absolute;
+    left: 30%;
+    top: 30%;
+    z-index: 3;
+    opacity: 0;
 }
 
 /* fourth animation elements */
@@ -273,12 +302,14 @@ end of the hero section */
     position: absolute;
     top: 40%;
     left: 35%;
+    opacity: 0;
 }
 
 .ratings{
     position: absolute;
     top: 25%;
     right:5%;
+    opacity: 0;
 }
 
 .Delivered{
@@ -286,6 +317,7 @@ end of the hero section */
     top: 20%;
     left: 25%;
     transform: rotate(-15deg);
+    opacity: 0;
 }
 
 .payments{
@@ -293,8 +325,15 @@ end of the hero section */
     bottom: 11%;
     left: 24%;
     transform: rotate(15deg);
+    opacity: 0;
 }
 
+.deliveryElement{
+    position: absolute;
+    top: 68%;
+    left: 42%;
+    z-index: 2;
+}
 /* paths from feature 1 to feature 2 */
 .pathf1tof2{
     position: absolute;
