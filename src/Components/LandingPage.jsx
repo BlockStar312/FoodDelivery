@@ -1,9 +1,9 @@
-import React, { useEffect, useRef ,useState} from 'react';
+import React, { useEffect, useRef,useState } from 'react';
 import { constants } from '../constants';
 import { gsap } from 'gsap';
 import { ScrollTrigger} from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-import { ScrollSmoother } from 'gsap/ScrollSmoother';
+// import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { MotionPathPlugin } from "gsap/all";
 import css from "../styles/LandingPage.module.css"
 
@@ -16,7 +16,7 @@ import YourOrder from "../Assets/YourOrder.png";
 import foodPackage from "../Assets/food-pack.png";
 import deliveryGuy from '../Assets/deliveryGuy.png'
 
-import ExtraCheeze from "../Assets/Features/Feature1/Extra Cheeze.png";
+import ExtraCheeze from "../Assets/Features/Feature1/ExtraCheeze.png";
 import backCard from "../Assets/Features/Feature1/backCard.png";
 import orderCard from "../Assets/Features/Feature1/OrderCard.png"
 
@@ -55,6 +55,7 @@ function LandingPage() {
     const sectionOneRef = useRef(null);
     const trackPathRef = useRef(null);
 
+    const [animationsEnabled ,setanimationEnabled] = useState(null)
   const dishAnime = () =>{
        return gsap.to('#Dish', {
                         y: '0%',
@@ -332,8 +333,14 @@ function LandingPage() {
         }))
         return trackTimeLine
   }
-  useEffect(()=>{
 
+  function shouldEnableAnimations() {
+       return window.innerWidth >= 1275
+
+  }
+  useEffect(()=>{
+    // checking window screeen
+    setanimationEnabled(shouldEnableAnimations())
     const masterTimeline = gsap.timeline();
 
     const feature1Timeline = gsap.timeline();
@@ -372,9 +379,7 @@ function LandingPage() {
     // timeline for section 1
     feature1Timeline.add([dishAnime(),foodCardAnime()],0)
     feature1Timeline.add(scrollDishtoFeatureSectionAnime())
-    feature1Timeline.add([featureCheezeAnim(),featureMenuCardFadeinAnime(),featureOrderCard()],'-=0.3')
-
-
+    feature1Timeline.add([featureCheezeAnim(),featureMenuCardFadeinAnime(),featureOrderCard()],'-=0.2')
 
     // timeline for section 2
     feature2Timeline.add(orderRecievedAnime())
@@ -410,21 +415,29 @@ function LandingPage() {
 
     masterTimeline.add(triggerPath1())
 
-    masterTimeline.add(motionPathFromFeature1(),'+=1.5')
+    masterTimeline.add(motionPathFromFeature1(),'+=1')
 
     masterTimeline.add(feature2Timeline)
 
     masterTimeline.add(triggerPath2())
 
-    masterTimeline.add(motionPathFromFeature2(),'+=1.5')
+    masterTimeline.add(motionPathFromFeature2(),'+=1')
 
     masterTimeline.add(feature3Timeline)
 
-    masterTimeline.add(deliveryMotionPath(),'+=1.5')
+    masterTimeline.add(deliveryMotionPath(),'+=1')
 
     masterTimeline.add(feature4Timeline)
 
-  }); // useEffect close
+    const animationsEnabled = shouldEnableAnimations();
+    // console.log(enableAnimations)
+    if(animationsEnabled){
+        masterTimeline.play()
+    }
+    else{
+        masterTimeline.pause()
+    }
+  },[animationsEnabled]); // useEffect close
 
   return (
     <div className={css.mainContainer}>
