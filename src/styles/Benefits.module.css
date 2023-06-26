@@ -17,3 +17,16 @@
     letter-spacing: 0.5px;
     font-size: 17px;
 }
+
+@media (max-width: 768px){
+    .container{
+        width: 60vw;
+    }
+    .title{
+        font-size: 16px;
+    }
+    .description{
+        font-size: 15px;
+        width: 100%;
+    }
+}

@@ -29,3 +29,32 @@ p{
     width: 32vw;
     letter-spacing: 0.5px;
 }
+
+
+@media (max-width: 930px){
+    .container{
+        width: 32vw;
+    }
+    .title{
+        font-size: 22px;
+    }
+    .description{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px){
+    .container{
+        width: 70vw;
+    }
+    .title{
+        width: 100%;
+        font-size: 20px;
+        text-align: center;
+    }
+    .description{
+        width: 100%;
+        font-size: 15px;
+        text-align: center;
+    }
+}

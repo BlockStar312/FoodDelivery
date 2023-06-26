@@ -41,3 +41,34 @@
       transform: translateY(-100%);
     }
   }
+
+  /* Media Queries and responsive design */
+  @media (max-width: 1270px){
+    .animated-text{
+        font-size: 58px;
+    }
+    
+}
+
+@media (max-width: 1150px){
+  .animated-text{
+    font-size: 50px;
+}
+}
+
+@media (max-width: 930px){
+  .animated-text{
+    font-size: 46px;
+}
+}
+
+@media (max-width: 767px) {
+  /* Styles for mobile devices */
+  .text-animation-container{
+    width: 30vw;
+  }
+  animated-text{
+    font-size: 36px;
+}
+  
+}

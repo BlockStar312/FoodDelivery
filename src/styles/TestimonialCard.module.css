@@ -27,3 +27,15 @@
     align-items: center;
     justify-content: space-between;
 }
+
+@media (max-width: 767px) {
+    .name{
+        font-size: 18px;
+    }
+    .review{
+        font-size: 14px;
+    }
+    .rating{
+        width: 18vw;
+    }
+}

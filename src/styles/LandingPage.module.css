@@ -5,7 +5,8 @@
     overflow-x: hidden;
     scroll-behavior: smooth;
 }
-p{
+p{  margin: 0;
+    padding: 0;
     color: #272D2D;
 }
 .mainContainer{
@@ -13,6 +14,7 @@ p{
     padding: 0;
     width: 100vw;
 }
+
 
 .NavbarConatainer{
     width: 100vw;
@@ -107,9 +109,6 @@ p{
     font-weight: 700;
     text-align: center;
 }
-.headline span{
-    color: #23CE6B;
-}
 
 .subheadline{
     width: 45%;
@@ -159,13 +158,14 @@ end of the hero section */
 
 .featureContainer{
     width: 100vw;
+    height: max-content;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50vh;
     margin-bottom: 5vh;
     padding: 5vh 0vh;
     position: relative;
+    margin-top: 24%;
 }
 .featureHeadline{
     font-size: 48px;
@@ -369,7 +369,7 @@ end of the hero section */
 .restaurantsCarousals{
     width: 100%;
     height: 50vh;
-    background-color: #ebf0ff;
+    background-color: #F6F8FF;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -454,7 +454,7 @@ end of the benefits */
   .gridItem:nth-child(4) {
     grid-column: 1 / span 1;
     grid-row: 2 / span 2;
-    padding-left: 3rem;
+    margin-left: 3rem;
   }
   
   .gridItem:nth-child(5) {
@@ -628,3 +628,322 @@ end of the benefits */
     color: #949494;
     font-weight: 450;
 }
+
+/* Media Queries and responsive design */
+
+@media (max-width: 1270px){
+    .headline{
+        width: 50%;
+        font-size: 58px;
+    }
+    .heroRightBanner{
+        transform: scale(0.8);
+    }
+    .heroLeftBanner{
+        transform: scale(0.8);
+    }
+    .featureHeadline,.benefitsHeadline,.restaurantHeadline,.testimonialsHeadline{
+        font-size: 42px;
+    }
+    .ctaHeadline{
+        left: 0;
+    }
+}
+
+
+@media (max-width: 1150px){
+    .headline{
+        width: 50%;
+        font-size: 52px;
+    }
+    .subheadline{
+        font-size: 18px;
+    }
+    .heroRightBanner{
+        transform: scale(0.7);
+    }
+    .heroLeftBanner{
+        transform: scale(0.7);
+    }
+    .featureHeadline,.benefitsHeadline,.restaurantHeadline,.testimonialsHeadline{
+        font-size: 38px;
+    }
+    .ctaHeadline{
+        left: 0;
+    }
+}
+
+@media (max-width: 930px){
+    .headline{
+        width: 60%;
+        font-size: 46px;
+    }
+    .subheadline{
+        font-size: 16px;
+    }
+    .heroRightBanner{
+        transform: scale(0.6);
+    }
+    .heroLeftBanner{
+        transform: scale(0.6);
+    }
+    .featureHeadline,.benefitsHeadline,.restaurantHeadline,.testimonialsHeadline{
+        font-size: 32px;
+    }
+    .testimonialsContainer{
+        height: 150vh;
+    }
+    .ctaHeadline{
+        left: 0;
+    }
+
+    .ctaBanner{
+        width: 35%;
+    }
+    .ctaContentWrap{
+        width: 65%;
+    }
+    .ctaButton{
+        width: 20vw;
+        height: 6vh;
+        font-size: 18px;
+    }
+    .pathf1tof2,.pathf2tof3,.pathf3tof4,.packageElement,.yourOrderElement,.deliveryElement{
+        display: none;
+    }
+}
+
+
+@media (max-width: 768px) {
+    /* Styles for mobile devices */
+    .heroSectionContent{
+        top: 18vh;
+    }
+    .headline{
+        width: 70%;
+        font-size: 42px;
+    }
+    .subheadline{
+        width: 70%;
+        font-size: 16px;
+    }
+    .heroCTA{
+        width: 40vw;
+    }
+    .heroRightBanner{
+        display: none;
+    }
+    .heroLeftBanner{
+        display: none;
+    }
+
+    .featureWrapper{
+        width: 100%;
+        height: 100vh;
+        flex-direction: column;
+        align-items: center;
+    }
+    .featureBanner{
+        width: 100%;
+        height: 60%;
+    }
+
+    .featureExtraCheeze{
+        top: 5%;
+        left: 13%;
+        transform: scale(0.6) rotate(15deg);
+    }
+
+    .orderCard{
+        top: -5%;
+        right: 12%;
+        transform: scale(0.63);
+    }
+    .feactureBackCard{
+        top: 0%;
+        transform: scale(0.7);
+    }
+    .orderRecieved ,.addSpices ,.cookingWokhei{
+        opacity: 1;
+    }
+    .orderRecieved{
+        left:30%;
+        transform: scale(0.8);
+    }
+    .addSpices {
+        left: 22%;
+        top: 5%;
+        transform: scale(0.7) rotate(15deg);
+    }
+    .cookingWokhei{
+        right: 22%;
+        top: 50%;
+        transform: scale(0.7) rotate(-15deg);
+    }
+
+    .arrivingSoon,.PickedUp,.trackMap,.trackDeliveryMan,.trackingPath{
+        opacity: 1;
+    }
+    .trackMap{
+        top: 0%;
+        left: 20%;
+        transform: scale(0.6);
+    }
+    .trackingPath{
+        top: 10%;
+        left: 34%;
+        transform: scale(0.6);
+    }
+    .trackDeliveryMan{
+        top: 28%;
+        left: 41%;
+        transform: scale(0.7);
+    }
+    .PickedUp{
+        left :20%;
+        transform: scale(0.7) rotate(-15deg);
+    }
+    .arrivingSoon{
+        right: 15%;
+        top: 60%;
+        transform: scale(0.7) rotate(15deg);
+    }
+
+    .package,.payments,.ratings,.Delivered{
+        opacity: 1;
+    }
+    .package{
+        left: 16%;
+        top: 20%;
+        transform: scale(0.65);
+    }
+    .Delivered{
+        left: 16%;
+        top: 5%;
+        transform: scale(0.7) rotate(15deg);
+    }
+    .payments{
+        left: 16%;
+        bottom: 7%;
+        transform: scale(0.7) rotate(-15deg);
+    }
+    .ratings{
+        top: 10%;
+        right: 10%;
+        transform: scale(0.7);
+    }
+    .featureWrapper:nth-of-type(2),.featureWrapper:nth-of-type(4){
+        flex-direction: column-reverse;
+    }
+    .featureHeadline,.benefitsHeadline,.restaurantHeadline,.testimonialsHeadline{
+        font-size: 28px;
+        padding: 0;
+        margin: 0;
+    }
+    .benefitsContainer{
+        height: 155vh;
+    }
+    .benefitsWrapper{
+        height: 90%;
+        flex-direction: column;
+    }
+
+    .benefitsHeadline{
+        width: 70%;
+    }
+    .testimonialsContainer{
+        height: 200vh;
+    }
+
+
+    .testimonialWrapper{
+        width: 90%;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(5, 1fr); /* Adjusted grid-template-rows */
+        gap: 1rem;
+        padding: 3rem 2rem;
+    }
+    .gridItem:nth-child(1) {
+        grid-column: 1 / span 3;
+        grid-row: 3 / span 1;
+        width: 100%;
+      }
+      
+      .gridItem:nth-child(2) {
+        grid-column: 1 / span 4;
+        grid-row: 1 / span 1;
+        width: 100%;
+        height: 40vh;
+      }
+      
+      .gridItem:nth-child(3) {
+        grid-column: 3 / span 2;
+        grid-row: 2 / span 1;
+        width: 100%;
+        left: 0;
+      }
+      
+      .gridItem:nth-child(4) {
+        grid-column: 1 / span 4;
+        grid-row: 5 / span 1;
+        margin-left: 0;
+        height: 35vh;
+      }
+      
+      .gridItem:nth-child(5) {
+        grid-column: 1 / span 2;
+        grid-row: 2 / span 1;
+        width: 100%;
+        height: 30vh;
+      }
+      
+      .gridItem:nth-child(6) {
+        grid-column: 1 / span 2;
+        grid-row: 4 / span 1;
+        width: 100%;
+        left: 0;
+    
+      }
+      .gridItem:nth-child(7) {
+        grid-column: 3 / span 2;
+        grid-row: 4 / span 1;
+        width: 100%;
+      }
+
+    .finalCTAContainer{
+        height: 100vh;
+      }
+    .ctaWrapper{
+        height: 85%;
+        width: 80%;
+        flex-direction: column-reverse;
+      }
+    .ctaBanner{
+        width: 100%;
+        height: 80%
+    }
+    .ctaHeadline{
+        left: 0;
+        font-size: 24px;
+        width: 100%;
+    }
+    .ctaSubheadline{
+        font-size: 16px;
+    }
+
+    .ctaBanner{
+        width: 100%;
+    }
+    .ctaContentWrap{
+        width: 100%;
+        padding: 0rem 2rem;
+    }
+    .ctaButton{
+        width: 40vw;
+        height: 6vh;
+        font-size: 16px;
+    }
+    .pathf1tof2,.pathf2tof3,.pathf3tof4,.packageElement,.yourOrderElement,.deliveryElement{
+        display: none;
+    }
+  }
