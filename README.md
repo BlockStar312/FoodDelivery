@@ -1,4 +1,4 @@
- # **Task Management Website**
+ # *Food Delivery Landing Page Website**
 👋 Welcome to the Food Delivery Landing Page project! This is a personal project aimed at showcasing a modern and enticing landing page for a food delivery service.
 
 ### **Features**
