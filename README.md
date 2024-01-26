@@ -47,7 +47,7 @@ Access the website through your web browser at http://localhost:3000.
 
 ### Contact
 
-📬 If you have any questions or suggestions, feel free to reach out to me olehstrelba@gmail.com@gmail.com.
+📬 If you have any questions or suggestions, feel free to reach out to me olehstrelba@gmail.com.
 
 Enjoy exploring the delicious world of food! 🍔🍕🥗
 
